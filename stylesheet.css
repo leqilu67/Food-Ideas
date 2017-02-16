@@ -1,0 +1,32 @@
+#container{
+	text-align: center;
+}
+
+#questionBox{
+	position: absolute;
+	width: 500px;
+	height: 200px;
+	top: 50%;
+	left: 50%;
+	margin: -100px 0 0 -250px;
+}
+
+#questionDiv{
+	font-size: 200%;
+	text-align: center;
+}
+
+#answerDiv{
+	font-size: 300%;
+	text-align: center;
+	color: orange;
+	margin-top: 20px;
+}
+
+#button{
+	width: 150px;
+	height: 40px;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 100%;
+}
