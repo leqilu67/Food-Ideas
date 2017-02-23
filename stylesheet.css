@@ -39,5 +39,6 @@
 .bgDivs{
 	position: absolute;
 	font-size: 150%;
+	height: 10vh;
 	opacity: 0;
 }
