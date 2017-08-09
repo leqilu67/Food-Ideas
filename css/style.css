@@ -1,8 +1,6 @@
-#container{
-	text-align: center;
-	position: relative;
-	height: 100vh;
-	width: 100vw;
+#container {
+  text-align: center;
+  position: relative;
 }
 
 #questionBox{
@@ -36,9 +34,9 @@
 	font-size: 100%;
 }
 
-.bgDivs{
-	position: absolute;
-	font-size: 150%;
-	height: 10vh;
-	opacity: 0;
+.bgDivs {
+  overflow: hidden;
+  position: absolute;
+  font-size: 150%;
+  opacity: 0;
 }
