@@ -1,22 +1,36 @@
 (function(){
-  var container = document.getElementById('container');
+  var container = document.getElementById('mainContent');
 
   container.setup = function(){
-    container.style.width = window.innerWidth + 'px';
-    container.style.height = window.innerHeight + 'px';
-
     container.bg = document.getElementById('bg');
     container.questionBox = document.getElementById('quesetionBox');
     container.questionDiv = document.getElementById('questionDiv');
     container.answerDiv = document.getElementById('answerDiv');
     container.button = document.getElementById('startButton');
+    container.display = document.getElementById('display');
+    container.newItem = document.getElementById('newItem');
+    container.addButton = document.getElementById('addThis');
 
-    container.options = ["Pizza", "Burger", "Pasta", "Fried Chicken", "Hot Pot", "BBQ", "Ramen", "Sandwiches", "Taco Truck", "Salad", "Ice Cream", "Sushi", "Pho", "Thai"];
+    //set up localStorage
+    if (localStorage && localStorage.getItem('options')){
+      container.options = JSON.parse(localStorage.getItem('options'));
+    } else {
+      container.options = ["Pizza", "Burger", "Pasta", "Fried Chicken", "Hot Pot", "BBQ", "Ramen", "Sandwiches", "Taco Truck", "Salad", "Ice Cream", "Sushi", "Pho", "Thai"];
+    }
     container.colors = ["red", "yellow", "green", "pink", "brown", "blue"];
 
     container.button.clicked = 0;
+    container.itemID = 0;
 
     container.bgDivs = [];
+
+    container.display.innerHTML = "";
+
+    // add default/cached item
+    for (var i = 0; i < container.options.length; i++){
+      var item = container.options[i];
+      container.addItem(item);
+    }
 
     for (var i = 0; i < 10; i++){
       var div = document.createElement('div');
@@ -28,10 +42,54 @@
     }
 
     container.button.addEventListener('click', container.runRandomizer);
+    container.addButton.addEventListener('click', function(){
+      container.addItem(newItem.value);
+      container.options.push(newItem.value);
+      newItem.value = "";
+
+      localStorage.clear();
+      localStorage.setItem('options', JSON.stringify(container.options));
+    });
   }
 
+  container.addItem = function(item){
+    container.itemID++;
+    var entry = document.createElement('li');
+    entry.entryID = container.itemID;
+    entry.itemName = item;
+    entry.appendChild(document.createTextNode(item));
+    entry.setAttribute('id', 'item' + entry.entryID);
+    // put spaces between item and remove button
+    entry.appendChild(document.createTextNode("\u00A0\u00A0\u00A0\u00A0\u00A0"));
 
+    var removeButton = document.createElement('button');
+    removeButton.appendChild(document.createTextNode("remove"));
+    removeButton.setAttribute('class', 'btn');
+    removeButton.addEventListener('click', function _func(){
+      removeButton.removeEventListener('click', _func);
+      container.removeItemSelection('item' + entry.entryID);
+    });
+    entry.appendChild(removeButton);
+    container.display.appendChild(entry);
+  }
+
+  container.removeItemSelection = function(id){
+    var item = document.getElementById(id);
+    if (item) {
+      container.options.splice(container.options.indexOf(item.itemName), 1);
+      container.display.removeChild(item);
+      localStorage.clear();
+      localStorage.setItem('options', JSON.stringify(container.options));
+    }
+  }
+
+  // choose a random food
   container.runRandomizer = function(e){
+    if (container.options.length == 0){
+      alert("Please make sure list is not empty.");
+      return;
+    }
+
     var button = e.target;
     button.removeEventListener('click', container.runRandomizer);
 
@@ -49,7 +107,7 @@
       button.clicked = 0;
       clearInterval(container.timer);
       container.clearBackgroundEffect();
-      button.innerHTML = "Nope. Try again.";
+      button.innerHTML = "Try again.";
     }
     button.addEventListener('click', container.runRandomizer);
   }

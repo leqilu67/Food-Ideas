@@ -1,16 +1,33 @@
-#container {
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  overflow: hidden;
+}
+
+.container{
+  max-width: 1200px;
+  height: 100vh;
+}
+
+#mainContent {
   text-align: center;
   position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
 #questionBox{
 	position: absolute;
-	width: 500px;
-	height: 200px;
-	top: 50%;
-	left: 50%;
+  width: 50%;
+  height: 50%;
+	top: 25%;
+	left: 25%;
 	background-color: white;
-	margin: -100px 0 0 -250px;
 }
 
 #questionDiv{
@@ -20,18 +37,70 @@
 }
 
 #answerDiv{
-	font-size: 300%;
+	font-size: 200%;
 	text-align: center;
 	color: orange;
-	margin-top: 20px;
 }
 
-#button{
-	width: 150px;
-	height: 40px;
-	margin-top: 20px;
+#startButton{
+  width: 50%;
+  height: 10%;
 	text-align: center;
 	font-size: 100%;
+}
+
+/*List Related*/
+
+.navbar {
+  overflow: hidden;
+  background-color: #f2f7ef;
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  margin: 0;
+}
+
+.navbar .navbar-collapse {
+  padding: 0px;
+  overflow: auto;
+  max-height: 60vh;
+}
+
+.navbar-nav {
+  margin: 0px;
+}
+
+.navbar .nav > li {
+  text-align: left;
+  font-weight: 200;
+  color: #93B1C1;
+  padding-left: 30px;
+  padding-top: 1px;
+}
+
+#curList{
+  font-size: 200%;
+  font-weight: 300;
+  text-align: center;
+  background-color: #84DF90;
+}
+
+#listDiv{
+  /*overflow: auto;*/
+  padding: 0;
+}
+
+#addNewItem{
+  float: right;
+}
+
+#display{
+  width: 100%;
+  height: 30%;
+  font-size: 100%;
+  font-weight: 200;
+  text-align: center;
 }
 
 .bgDivs {
@@ -39,4 +108,56 @@
   position: absolute;
   font-size: 150%;
   opacity: 0;
+}
+
+/* large devices */
+@media (min-width: 1200px){
+  #listDiv{
+    height: 100vh;
+  }
+
+  .container-fluid{
+    height: 100vh;
+    overflow: auto;
+  }
+
+  .navbar .nav > li{
+    float: none;
+  }
+}
+/* medium devices */
+@media (min-width: 992px) and (max-width: 1199px) {
+  #listDiv{
+    height: 100vh;
+  }
+
+  .container-fluid{
+    height: 100vh;
+    overflow: auto;
+  }
+
+  .navbar .nav > li{
+    float: none;
+  }
+}
+
+/* small devices */
+@media (min-width: 768px) and (max-width: 991px) {
+  #listDiv{
+    height: 100vh;
+  }
+
+  .container-fluid{
+    height: 100vh;
+    overflow: auto;
+  }
+
+  .navbar .nav > li{
+    float: none;
+  }
+}
+
+/* extra small devices */
+@media (max-width: 767px) {
+
 }

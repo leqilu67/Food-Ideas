@@ -8,23 +8,57 @@
   <!-- include stylesheets -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div id="container">
-    <div id="bg"></div>
-    <div id="questionBox">
-      <div id="questionDiv">
-        What to EAT
-      </div>
-      <div id="answerDiv" data-text=" ">
-      </div></br>
-      <button id="startButton">Start!</button>
-    </div>
-  </div>
 
-  <!-- include js files -->
+  <!-- include JS files -->
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body data-spy="scroll" data-target=".nav" data-offset="50">
+  <div id="foddRandomizer" class="container-fluid">
+    <div class="row">
+      <div id="mainContent" class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <div id="bg"></div>
+        <div id="questionBox">
+          <div id="questionDiv">
+            What to EAT
+          </div></br>
+          <div id="answerDiv">
+          </div></br>
+          <button id="startButton">Start!</button>
+          <!-- <input type="button" id="startButton" value="Start!"> -->
+        </div>
+      </div>
+
+      <div id="listDiv" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tabs">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">Current List:</a>
+          </div>
+
+          <div id="tabs" class="navbar-collapse collapse">
+            <ul id="display" class="nav navbar-nav">
+            </ul>
+
+
+            <div id="addNewItem"></br></br>
+              <input type="text" id="newItem">
+              <!-- <input type="button" id="addThis" value="Add this!"> -->
+              <button type="button" id="addThis" class="btn">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </nav>
+    </div>
+  </div>
+  <!-- include js files -->
   <script src="js/script.js"></script>
 </body>
 </html>
