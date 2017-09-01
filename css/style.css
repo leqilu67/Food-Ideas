@@ -19,6 +19,7 @@ body {
   position: relative;
   height: 100vh;
   overflow: hidden;
+  background-color: #daf5ff;
 }
 
 #questionBox{
@@ -27,33 +28,31 @@ body {
   height: 50%;
 	top: 25%;
 	left: 25%;
-	background-color: white;
+  color: #033F63;
 }
 
 #questionDiv{
 	font-size: 200%;
 	text-align: center;
-	background-color: white;
 }
 
 #answerDiv{
 	font-size: 200%;
 	text-align: center;
-	color: orange;
+	color: #FEC60D;
 }
 
 #startButton{
-  width: 50%;
-  height: 10%;
 	text-align: center;
 	font-size: 100%;
+  color: #033F63;
 }
 
 /*List Related*/
 
 .navbar {
   overflow: hidden;
-  background-color: #f2f7ef;
+  background-color: #FFEFA9;
   display: block;
   position: absolute;
   bottom: 0px;
@@ -74,7 +73,7 @@ body {
 .navbar .nav > li {
   text-align: left;
   font-weight: 200;
-  color: #93B1C1;
+  color: #033F63;
   padding-left: 30px;
   padding-top: 1px;
 }
@@ -83,7 +82,6 @@ body {
   font-size: 200%;
   font-weight: 300;
   text-align: center;
-  background-color: #84DF90;
 }
 
 #listDiv{
@@ -93,6 +91,7 @@ body {
 
 #addNewItem{
   float: right;
+  color: #033F63;
 }
 
 #display{

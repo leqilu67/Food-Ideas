@@ -10,6 +10,7 @@
     container.display = document.getElementById('display');
     container.newItem = document.getElementById('newItem');
     container.addButton = document.getElementById('addThis');
+    container.defaultBtn = document.getElementById('defaultBtn');
 
     //set up localStorage
     if (localStorage && localStorage.getItem('options')){
@@ -27,10 +28,7 @@
     container.display.innerHTML = "";
 
     // add default/cached item
-    for (var i = 0; i < container.options.length; i++){
-      var item = container.options[i];
-      container.addItem(item);
-    }
+    container.addDefaultItems();
 
     for (var i = 0; i < 10; i++){
       var div = document.createElement('div');
@@ -50,6 +48,26 @@
       localStorage.clear();
       localStorage.setItem('options', JSON.stringify(container.options));
     });
+    container.defaultBtn.addEventListener('click', function(){
+      container.options = [];
+      container.options = ["Pizza", "Burger", "Pasta", "Fried Chicken", "Hot Pot", "BBQ", "Ramen", "Sandwiches", "Taco Truck", "Salad", "Ice Cream", "Sushi", "Pho", "Thai"];
+
+      while (container.display.hasChildNodes()) {
+          container.display.removeChild(container.display.lastChild);
+      }
+
+      container.addDefaultItems();
+
+      localStorage.clear();
+      localStorage.setItem('options', JSON.stringify(container.options));
+    });
+  }
+
+  container.addDefaultItems = function(){
+    for (var i = 0; i < container.options.length; i++){
+      var item = container.options[i];
+      container.addItem(item);
+    }
   }
 
   container.addItem = function(item){
